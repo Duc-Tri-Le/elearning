@@ -1,0 +1,182 @@
+/* ===== Container tổng ===== */
+.container {
+    min-height: 100vh;
+    padding: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* ===== Tiêu đề trang ===== */
+.deckTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+/* ===== Danh sách deck ===== */
+.deckList {
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 2rem;
+    display: grid
+}
+
+/* ===== Card tạo deck mới ===== */
+.createDeck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    border: 2px dashed #0070f3;
+    border-radius: 16px;
+    background-color: #f9fbff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: #0070f3;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.createDeck:hover {
+    background-color: #e6f0ff;
+    transform: translateY(-5px);
+}
+
+/* ===== Card của mỗi deck ===== */
+.deckCard {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform .3s, box-shadow .3s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+    position: relative;
+    height: 10rem;
+    overflow: hidden;
+}
+
+.deckCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px -6px rgba(0, 0, 0, 0.15);
+}
+
+.deckCard h3 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #1e40af;
+    position: absolute;
+    top: 0.5rem;
+}
+
+.deckCard p {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.4;
+    position: absolute;
+}
+
+.date{
+    bottom: 1rem
+}
+
+.description{
+top: 3.5rem;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination button {
+    padding: 8px 14px;
+    border: none;
+    background-color: #0070f3;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pagination button:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #005ad3;
+}
+
+.pagination span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ===== Modal Overlay ===== */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* ===== Modal Content ===== */
+.modalContent {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+    color: #000;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 100px 16px 30px;
+    }
+
+    .deckList {
+        justify-content: center;
+    }
+
+    .deckCard,
+    .createDeck {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .deckTitle {
+        font-size: 24px;
+    }
+}

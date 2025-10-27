@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+npm-debug.log
+dist
+.dist
+./dist
+dist/*
+.dist/*
+./dist/*
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,65 @@
+/* Header.module.css */
+
+/* Header Container */
+.header {
+    display: flex;
+    /* flex */
+    align-items: center;
+    /* items-center */
+    justify-content: space-between;
+    /* justify-between */
+    background-color: white;
+    /* bg-white */
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    /* shadow */
+    padding: 1rem 1.5rem;
+    /* px-6 py-4 (1.5rem for x, 1rem for y) */
+    border-bottom: 1px solid #E5E7EB;
+    /* border-b (using a standard light gray) */
+    font-family: var(--font-header);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+/* Search Input */
+.searchInput {
+    border: 1px solid #D1D5DB;
+    /* border */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    width: 50%;
+    /* w-1/2 */
+    font-size: 0.875rem;
+    /* text-sm */
+    /* Add focus styling for better UX */
+    outline: none;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.searchInput:focus {
+    border-color: #2563EB;
+    /* A blue border on focus */
+}
+
+/* Admin Info Container */
+.adminInfoContainer {
+    display: flex;
+    /* flex */
+    align-items: center;
+    /* items-center */
+    gap: 1rem;
+    /* gap-4 */
+}
+
+/* Admin Text */
+.adminText {
+    color: #4B5563;
+    /* text-gray-600 */
+    font-weight: 500;
+    /* Optional: Makes the text stand out a bit */
+}

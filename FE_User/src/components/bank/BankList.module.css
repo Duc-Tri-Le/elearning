@@ -1,0 +1,94 @@
+.container {
+    min-height: 100vh;
+    padding: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.topicButton {
+    padding: 0.4rem 1rem;
+    font-size: 0.95rem;
+    border: none;
+    background: transparent;
+    color: #111827;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.topicButton:hover {
+    background: #e5edff;
+    color: #1d4ed8;
+}
+
+.active {
+    background: #e0e7ff;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Lưới các bank */
+.grid {
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 2rem;
+    display: grid
+}
+
+.card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 11rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.topic,
+.description,
+.button {
+    left: 1rem;
+    right: 0.5rem;
+}
+
+.description {
+    color: #374151;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 1.5rem;
+}
+
+.button {
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 200;
+    transition: background 0.3s ease;
+    position: absolute;
+    bottom: 1rem;
+    width: 140px;
+    background-color: white;
+    color: #0070f3;
+    border: 1px solid #0070f3;
+}
+
+.empty {
+    text-align: center;
+    color: #6b7280;
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+}

@@ -1,0 +1,119 @@
+/* ========== SIDEBAR CONTAINER ========== */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: white;
+    color: #0070f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Inter", sans-serif;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 23px 0 0 25px;
+    border: 2px solid #fff;
+    position: fixed;
+    z-index: 10;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* ========== LOGO ========== */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logoWrapper {
+    position: relative;
+    width: 100px;
+    aspect-ratio: 5 / 3;
+}
+
+.logoText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-weight: 700;
+    line-height: 1.1;
+    align-items: center;
+}
+
+.logoText span {
+    font-size: 0.8em;
+    /* nhỏ hơn chữ chính */
+    color: #0070f3;
+    /* đổi màu nếu muốn */
+    letter-spacing: 1px;
+}
+
+/* ========== NAVIGATION ========== */
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0 1rem;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 1px;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: all 0.25s ease;
+    width: 70%;
+}
+
+.navItem:hover {
+    opacity: 1;
+    transform: translateX(4px);
+    border: 1px solid #0070f3;
+}
+
+.active {
+    opacity: 1;
+    border-bottom: 1px solid #0070f3;
+}
+
+/* ========== BOTTOM BUTTON ========== */
+.buttonContainer {
+    padding: 1.5rem 1rem;
+}
+
+.adminButton {
+    width: 100%;
+    background-color: #ffffff;
+    color: #2d6cf6;
+    padding: 0.75rem 0;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.adminButton:hover {
+    background-color: #e9efff;
+    transform: scale(1.03);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}

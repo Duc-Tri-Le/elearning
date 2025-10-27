@@ -1,0 +1,125 @@
+.roadmapContainer {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+  }
+  
+  .roadmapTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a4d9b;
+    margin-bottom: 10px;
+  }
+  
+  .roadmapSubtitle {
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  .roadmapLine {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    margin-left: 20px;
+  }
+  
+  /* Đường nối giữa các bước */
+  .roadmapLine::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #cbd5e1;
+    z-index: 0;
+  }
+  
+  .roadmapStep {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    z-index: 1;
+  }
+  
+  .stepCircle {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1a4d9b;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .stepContent {
+    text-align: left;
+    background-color: #f8f9fc;
+    padding: 16px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #1a4d9b;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .stepContent:hover {
+    background-color: #eef3ff;
+    transform: translateX(4px);
+  }
+  
+  .stepContent h3 {
+    margin: 0 0 8px;
+    color: #1a1a1a;
+    font-size: 18px;
+  }
+  
+  .stepContent p {
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .roadmapContainer {
+      padding: 15px;
+    }
+  
+    .roadmapTitle {
+      font-size: 22px;
+    }
+  
+    .roadmapStep {
+      gap: 12px;
+    }
+  
+    .stepCircle {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+    }
+  
+    .stepContent {
+      padding: 12px 15px;
+    }
+  
+    .stepContent h3 {
+      font-size: 16px;
+    }
+  
+    .stepContent p {
+      font-size: 14px;
+    }
+  }
+  

@@ -1,0 +1,58 @@
+/* Setting.module.css */
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    /* ngay dưới avatar */
+    right: 0;
+    /* căn phải với avatar */
+    margin-top: 8px;
+    /* khoảng cách nhỏ */
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    /* viền xám nhẹ */
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    /* nổi trên cùng */
+    width: 220px;
+    padding: 8px 0;
+}
+
+/* Danh sách menu */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mỗi item */
+.menu li {
+    padding: 10px 16px;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hiệu ứng hover */
+.menu li:hover {
+    background-color: #f5f5f5;
+}
+
+/* Link */
+.menu a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Nút đăng xuất */
+.logout {
+    color: #d32f2f;
+    font-weight: 500;
+}
+
+.logout:hover {
+    background-color: #ffeaea;
+}

@@ -1,0 +1,76 @@
+.form {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 2rem;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.change_input {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.field input {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: #0070f3;
+    box-shadow: 0 0 0 2px rgba(0, 118, 255, 0.2);
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.submitBtn {
+    background-color: white;
+    color: rgb(150, 178, 225);
+    border: 1px solid rgb(150, 178, 225);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+.submitBtn:active {
+    transform: scale(0.98);
+}

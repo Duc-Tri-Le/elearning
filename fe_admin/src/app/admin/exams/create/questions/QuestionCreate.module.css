@@ -1,0 +1,110 @@
+.container {
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.label {
+    font-weight: 500;
+    color: #444;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #0070f3;
+}
+
+.textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.answersBlock {
+    margin-top: 10px;
+}
+
+.answerItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.correctCheck {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.removeBtn {
+    background: #ff6666;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.removeBtn:hover {
+    background: #e63946;
+}
+
+.addAnswerBtn {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.addAnswerBtn:hover {
+    background: #0057c9;
+}
+
+.submitBtn {
+    margin-top: 16px;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.submitBtn:hover {
+    background: #218838;
+}
