@@ -27,6 +27,7 @@ export default function Pagination({ totalPages, currentPage, setCurrentPage }: 
             if (i >= 1 && i <= totalPages) pages.push(i);
         }
     }
+    
     return (
         <div className={styles.pagination}>
             <button onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))} disabled={currentPage === 1}>

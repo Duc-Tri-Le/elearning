@@ -9,7 +9,7 @@ const ExamService = {
     try {
       await client.query("BEGIN");
 
-      const limit: number = 15
+      const limit: number = 12
       const offset = (page - 1) * limit + 1;
       const queryText = `SELECT 
         e.exam_name, e.topic_id, e.time_limit, e.exam_id, e.created_at, e.available,

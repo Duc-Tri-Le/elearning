@@ -5,6 +5,7 @@ import styles from "./Flashcards.module.css";
 import Cookies from "js-cookie";
 import Pagination from "@/components/pagination/Pagination";
 import AddFlashcards from "@/components/add-flashcards/AddFlashcards";
+import { useRouter } from "next/navigation";
 
 type Flashcard = {
   flashcard_id: number;
@@ -26,7 +27,9 @@ export default function FlashcardDetail() {
   const [totalItem, setTotalItem] = useState<number>();
   const [totalDone, setTotalDone] = useState(0);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [filterFlashcard, setFilterFlashCard] = useState<Flashcard[]>([])
+  const [filterFlashcard, setFilterFlashCard] = useState<Flashcard[]>([]);
+  const API_URL = process.env.NEXT_PUBLIC_ENDPOINT_BACKEND;
+  const router = useRouter();
 
   //phan trang
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,7 +45,7 @@ export default function FlashcardDetail() {
       try {
         const token = Cookies.get("token");
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_ENDPOINT_BACKEND}/flashcards/decks/${id}?page=${currentPage}`,
+          `${API_URL}/flashcards/decks/${id}?page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -67,6 +70,22 @@ export default function FlashcardDetail() {
     fetchFlashcards();
   }, [id]);
 
+  // xoa flashcards decks
+  const deleteDeck = async () => {
+    const token = Cookies.get("token");
+    try {
+      await fetch(`${API_URL}/flashcards/decks/remove/${id}`,{
+        method : "DELETE",
+        headers : {
+          "Content-Type" : "application/json",
+          Authorization : `Beare ${token}`
+        }
+      })
+      router.push("/flashcards")
+    } catch (error : any) {
+      console.log(error);      
+    }
+  }
   if (loading) return <p>Đang tải dữ liệu...</p>;
 
   return (
@@ -76,7 +95,7 @@ export default function FlashcardDetail() {
         <div className={styles.btn_add_update_delete}>
           <button className={styles.btn_add} onClick={() => setShowAddModal(true)}>Thêm flashcard</button>
           <button className={styles.btn_update}>Chỉnh sửa</button>
-          <button className={styles.btn_delete}>Xoá</button>
+          <button className={styles.btn_delete} onClick={deleteDeck}>Xoá</button>
         </div>
         {flashcards.length !== 0 &&
           <div className={styles.btn_route}>

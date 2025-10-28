@@ -41,13 +41,13 @@ export default function ExamList() {
       })
       const data = await resExam.json();
       dispatch(setExams(data.data.data));
-      setTotalPage(data.data.totalPage);
+      setTotalPage(data.data.totalPages);
     }
     fetchExam();
     // dispatch(
     //   setExams(mockExams)
     // )
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     setFilterExam(exams)
@@ -58,6 +58,8 @@ export default function ExamList() {
     router.push(`/exam/${exam_id}/do`)
   }
 
+  console.log(totalPage);
+  
   return (
     <div className={styles.container}>
       <h1 className={styles.title}> Danh sách đề thi thử</h1>

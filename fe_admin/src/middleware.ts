@@ -16,5 +16,5 @@ export function middleware(req: NextRequest) {
 
 // Chỉ áp dụng cho các route cần bảo vệ
 export const config = {
-  matcher: ["/admin/exams/:path*", "/admin/schedule/:path*", "/admin/users/:path*"],
+  matcher: ["/admin/exams/:path*", "/admin/schedules/:path*", "/admin/users/:path*"],
 };

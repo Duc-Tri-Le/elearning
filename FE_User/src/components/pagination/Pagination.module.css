@@ -3,9 +3,6 @@
     display: flex;
     gap: 8px;
     justify-content: center;
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
 }
 
 .pagination button {

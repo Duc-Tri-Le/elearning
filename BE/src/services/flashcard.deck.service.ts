@@ -121,6 +121,8 @@ export const FlashcardDeckService = {
   },
 
   async remove(id: number): Promise<boolean> {
+    console.log("id", id);
+    
     const result = await query(
       "DELETE FROM flashcard_deck WHERE flashcard_deck_id = $1",
       [id]
