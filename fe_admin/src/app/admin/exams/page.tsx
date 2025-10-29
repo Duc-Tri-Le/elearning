@@ -5,6 +5,7 @@ import styles from "./Exam.module.css";
 import Cookies from "js-cookie";
 import FilterExam from "@/component/filter/Filter/Filter";
 import { useRouter } from "next/navigation";
+import Search from "@/component/search/Search";
 
 type Exam = {
   exam_id: number;
@@ -24,6 +25,10 @@ export default function Exam() {
   const [search, setSearch] = useState("");
   const API_URL = process.env.NEXT_PUBLIC_ENDPOINT_BACKEND;
   const [status, setStatus] = useState<string>("true");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPage, setTotalPage] = useState<number>(1);
+  const [searchValue, setSearchValue] = useState<string>("");
+
   const router = useRouter();
 
   //  Lấy danh sách bài thi
@@ -31,7 +36,7 @@ export default function Exam() {
     const fetchExams = async () => {
       try {
         const token = Cookies.get("token");
-        const res = await fetch(`${API_URL}/exams`, {
+        const res = await fetch(`${API_URL}/exams?page=${currentPage}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -42,7 +47,7 @@ export default function Exam() {
         if (!res.ok) throw new Error("Không thể lấy danh sách bài thi");
 
         const data = await res.json();
-        setExams(data.data);
+        setExams(data.data.data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -52,10 +57,10 @@ export default function Exam() {
 
     fetchExams();
   }, []);
-
+  
   // Lọc bài thi đang hoạt động
   useEffect(() => {
-    setFilterExam(exams.filter((e) => e.available === true));
+    setFilterExam(exams?.filter((e) => e.available === true));
   }, [exams]);
 
   // Xoá bài thi
@@ -97,26 +102,6 @@ export default function Exam() {
     }
   };
 
-  //hàm lọc theo trạng thái và tìm theo tên
-  useEffect(() => {
-    let filtered = exams;
-
-    if (search.trim() !== "") {
-      const keyword = search.toLowerCase();
-      filtered = filtered.filter(
-        (u) =>
-          u.exam_name.toLowerCase().includes(keyword)
-      );
-    }
-
-    if (status !== "all") {
-      const isAvailable = status === "true";
-      filtered = filtered.filter((u) => u.available === isAvailable);
-    }
-
-    setFilterExam(filtered);
-  }, [search, status, exams, setFilterExam]);
-
   const detailExam = (id: number, exam: Exam) => {
     localStorage.setItem("exam", JSON.stringify(exam));
     router.push(`/admin/exams/detail/${id}`)
@@ -133,34 +118,7 @@ export default function Exam() {
           {/* filter search */}
           <div className={styles.filter_search}>
             <FilterExam exams={exams} setFilterExam={setFilterExam} />
-            <div className={styles.filter}>
-              <input
-                type="text"
-                placeholder="Tìm theo tên hoặc email..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className={styles.input}
-              />
-              <select
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-                className={styles.select}
-              >
-                <option value="all">Tất cả trạng thái</option>
-                <option value="true">Hoạt động</option>
-                <option value="false">Bị khóa</option>
-              </select>
-              {/* Nút xóa lọc */}
-              <button
-                onClick={() => {
-                  setSearch("");
-                  setStatus("all");
-                }}
-                className={styles.clearBtn}
-              >
-                Đặt lại
-              </button>
-            </div>
+            <Search setFilterExam={setFilterExam} currentPage={currentPage} setTotalPage={setTotalPage}/>
           </div>
         </div>
       </div>
@@ -178,8 +136,8 @@ export default function Exam() {
           </tr>
         </thead>
         <tbody>
-          {filterExam.length > 0 ? (
-            filterExam.map((exam, index) => (
+          {filterExam?.length > 0 ? (
+            filterExam?.map((exam, index) => (
               <tr key={exam.exam_id} onClick={() => detailExam(exam.exam_id, exam)}>
                 <td>{index + 1}</td>
                 <td>{exam.exam_name}</td>

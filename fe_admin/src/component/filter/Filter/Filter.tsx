@@ -61,7 +61,14 @@ export default function Filter(
     const [subjects, setSubjects] = useState<Subject[]>([]);
     const [selectedSubject, setSelectedSubject] = useState<number | "All">("All");
     const [selectedTopic, setSelectedTopic] = useState<number | "All">("All");
-    const [showFilter, setShowFilter] = useState<boolean>(false)
+    const [showFilter, setShowFilter] = useState<boolean>(false);
+    const [status, setStatus] = useState<string>("true");
+    const [selectedStatus, setSelectedStatus] = useState<string>("ALL");
+    const Status = [
+        {label : 'Tất cả', value : "ALL"},
+        {label : "Hoạt động", value : "true"},
+        {label : "Không hoạt động", value : "false"}
+    ]
 
     // Lay data token, subject
     useEffect(() => {
@@ -144,20 +151,33 @@ export default function Filter(
         return items;
     }
 
+    //ham loc
     const handleFilter = () => {
         if (setFilterExam) {
-            const filtered = filterBySelection(exams, topics, selectedSubject, selectedTopic);
-            setFilterExam(filtered);
+          let filtered = filterBySelection(exams, topics, selectedSubject, selectedTopic);
+      
+          if (selectedStatus !== "ALL") {
+            filtered = filtered.filter((e) => String(e.available) === selectedStatus);
+          }
+      
+          setFilterExam(filtered);
         }
+      
         if (setFilterBank) {
-            const filtered = filterBySelection(banks, topics, selectedSubject, selectedTopic);
-            setFilterBank(filtered);
+          let filtered = filterBySelection(banks, topics, selectedSubject, selectedTopic);
+      
+          if (selectedStatus !== "ALL") {
+            filtered = filtered.filter((b) => String(b.available) === selectedStatus);
+          }
+      
+          setFilterBank(filtered);
         }
+      
         if (setDocuments) {
-            const filtered = filterBySelection(documents, topics, selectedSubject, selectedTopic);
-            setDocuments(filtered);
+          let filtered = filterBySelection(documents, topics, selectedSubject, selectedTopic);
+          setDocuments(filtered);
         }
-    };
+      };      
 
     return (
         <div className={styles.filter_container}>
@@ -190,7 +210,11 @@ export default function Filter(
                         selected={selectedTopic}
                         onSelect={(v) => setSelectedTopic(v)}
                     />
-                    {/* nut loc */}
+                    <FilterGroup title="Trạng thái"
+                    options={Status}
+                    selected={selectedStatus}
+                    onSelect={(v) => setSelectedStatus(v)}/>
+
                     <Button variant="outline" onClick={handleFilter}>
                         Lọc kết quả
                     </Button>

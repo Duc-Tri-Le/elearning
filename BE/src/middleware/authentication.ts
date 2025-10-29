@@ -36,7 +36,7 @@ const Authentication = {
   },
 
   // Middleware kiểm tra vai trò
-  AuthorizeRoles(roles: (string | number)[]) {
+  AuthorizeRoles(...roles: (string | number)[]) {
     return (req: Request, res: Response, next: NextFunction) => {
       try {
         const user_role = (req as any).user?.role_id;

@@ -17,7 +17,7 @@ const ExamController = {
   },
 
   async getById(req: Request, res: Response) {
-    const result: DefaultResponse<any> = await safeExecute(async () => {
+    const result: DefaultResponse<any> = await safeExecute(async () => {   
       return {
         status: 200,
         message: "Lấy thông tin đề thi thành công",
@@ -80,6 +80,18 @@ const ExamController = {
 
     return res.status(result.status).json(result);
   },
+
+  async search(req : Request, res : Response){
+    const result: DefaultResponse<any> = await safeExecute(async () => {
+      return {
+        status: 200,
+        message: "Lấy danh sách đề thi thành công",
+        data: await ExamService.search(String(req.query.searchValue), Number( req.query.page)),
+      };
+    });
+
+    return res.status(result.status).json(result);
+  }
 };
 
 export default ExamController;

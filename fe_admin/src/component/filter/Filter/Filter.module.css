@@ -1,7 +1,7 @@
 /* Container chính */
 .filter_container {
     max-width: 100%;
-    font-family: var( --font-body);
+    font-family: var(--font-body);
     border-radius: 12px;
 }
 
@@ -63,6 +63,24 @@
 .filter_group button.selected {
     border: 2px solid #4a90e2;
     background-color: #e6f0ff;
+}
+
+.select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.select:focus {
+    border-color: #0070f3;
+    outline: none;
+}
+
+.clearBtn:hover {
+    background-color: #e5e7eb;
 }
 
 /* Responsive */

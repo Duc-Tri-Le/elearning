@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import ExamController from '../controllers/exam.controller';
 import Authentication from '../middleware/authentication';
-import { ADMIN } from "../config/permission";
+import { ADMIN, USER } from "../config/permission";
 import { ExamQuestionController } from '../controllers/exam.question.controller';
 import { ScheduleExamController } from '../controllers/schedule.exam.controller';
 import QuestionController from '../controllers/question.controller';
@@ -24,7 +24,7 @@ const examRoute = Router();
  */
 examRoute.get('/schedule',
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ScheduleExamController.getAll);
 
 /**
@@ -57,7 +57,7 @@ examRoute.get(
  * @openapi
  * /exams/schedule/create:
  *   post:
- *     summary: Tạo lịch thi mới (yêu cầu admin)
+ *     summary: Tạo lịch thi mới (yêu cầu ...)
  *     tags: [Exams]
  *     requestBody:
  *       required: true
@@ -87,14 +87,14 @@ examRoute.get(
 examRoute.post(
         '/schedule/create',
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ScheduleExamController.create);
 
 /**
  * @openapi
  * /exams/schedule/update/{id}:
  *   put:
- *     summary: Cập nhật lịch thi (yêu cầu admin)
+ *     summary: Cập nhật lịch thi (yêu cầu ...admin)
  *     tags: [Exams]
  *     parameters:
  *       - name: id
@@ -131,17 +131,17 @@ examRoute.post(
  *         description: Lỗi server
  */
 examRoute.put(
-  '/schedule/update/:id',
-  Authentication.AuthenticateToken,
-  Authentication.AuthorizeRoles(ADMIN),
-  ScheduleExamController.update
+        '/schedule/update/:id',
+        Authentication.AuthenticateToken,
+        Authentication.AuthorizeRoles(...ADMIN),
+        ScheduleExamController.update
 );
 
 /**
  * @openapi
  * /exams/schedule/remove/{id}:
  *   delete:
- *     summary: Xóa lịch thi (yêu cầu admin)
+ *     summary: Xóa lịch thi (yêu cầu ...admin)
  *     tags: [Exams]
  *     parameters:
  *       - name: id
@@ -161,10 +161,10 @@ examRoute.put(
  *         description: Lỗi server
  */
 examRoute.delete(
-  '/schedule/remove/:id',
-  Authentication.AuthenticateToken,
-  Authentication.AuthorizeRoles(ADMIN),
-  ScheduleExamController.remove);
+        '/schedule/remove/:id',
+        Authentication.AuthenticateToken,
+        Authentication.AuthorizeRoles(...ADMIN),
+        ScheduleExamController.remove);
 
 // EXAM
 
@@ -181,6 +181,11 @@ examRoute.delete(
  *         description: Lỗi server
  */
 examRoute.get('/', ExamController.getAll);
+
+examRoute.get(`/search`,
+        Authentication.AuthenticateToken,
+        Authentication.AuthorizeRoles(...ADMIN, ...USER),
+        ExamController.search);
 
 /**
  * @openapi
@@ -206,7 +211,7 @@ examRoute.get('/:id', ExamController.getById);
  * @openapi
  * /exams/create:
  *   post:
- *     summary: Tạo đề thi mới (yêu cầu admin)
+ *     summary: Tạo đề thi mới (yêu cầu ...admin)
  *     tags: [Exams]
  *     requestBody:
  *       required: true
@@ -237,15 +242,15 @@ examRoute.get('/:id', ExamController.getById);
  */
 examRoute.post('/create',
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ExamController.create);
 
-        
+
 /**
  * @openapi
  * /exams/update/{id}:
  *   patch:
- *     summary: Cập nhật đề thi (yêu cầu admin)
+ *     summary: Cập nhật đề thi (yêu cầu ...admin)
  *     tags: [Exams]
  *     parameters:
  *       - in: path
@@ -285,14 +290,14 @@ examRoute.post('/create',
  */
 examRoute.patch('/update/:id',
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ExamController.update);
 
 /**
  * @openapi
  * /exams/setAvailable/{id}:
  *   patch:
- *     summary: Thay đổi trạng thái đề thi theo ID (yêu cầu admin)
+ *     summary: Thay đổi trạng thái đề thi theo ID (yêu cầu ...admin)
  *     tags: [Exams]
  *     parameters:
  *       - in: path
@@ -317,77 +322,77 @@ examRoute.patch('/update/:id',
  */
 examRoute.patch('/setAvailable/:id',
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ExamController.setAvailable);
 
- /**
- * @openapi
- * /exams/create/questions/{id}:
- *   post:
- *     summary: Tạo nhiều câu hỏi mới (Yêu cầu admin)
- *     tags:
- *       - Question
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               questions:
- *                 type: array
- *                 items:
- *                   type: object
- *                   properties:
- *                     question_name:
- *                       type: string
- *                       example: "Định luật II Newton"
- *                     question_content:
- *                       type: string
- *                       example: "Lực bằng khối lượng nhân gia tốc là phát biểu của định luật nào?"
- *                     answers:
- *                       type: array
- *                       items:
- *                         type: object
- *                         properties:
- *                           answer_content:
- *                             type: string
- *                             example: "Định luật II Newton"
- *                           is_correct:
- *                             type: boolean
- *                             example: true
- *           example:
- *             questions:
- *               - question_name: "Định luật II Newton"
- *                 question_content: "Lực bằng khối lượng nhân gia tốc là phát biểu của định luật nào?"
- *                 answers:
- *                   - answer_content: "Định luật I Newton"
- *                     is_correct: false
- *                   - answer_content: "Định luật II Newton"
- *                     is_correct: true
- *               - question_name: "Thủ đô của Việt Nam"
- *                 question_content: "Thành phố nào là thủ đô của Việt Nam?"
- *                 answers:
- *                   - answer_content: "Hà Nội"
- *                     is_correct: true
- *                   - answer_content: "TP. Hồ Chí Minh"
- *                     is_correct: false
- *     responses:
- *       201:
- *         description: Tạo câu hỏi thành công
- *       500:
- *         description: Lỗi server
- */
+/**
+* @openapi
+* /exams/create/questions/{id}:
+*   post:
+*     summary: Tạo nhiều câu hỏi mới (Yêu cầu admin)
+*     tags:
+*       - Question
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             type: object
+*             properties:
+*               questions:
+*                 type: array
+*                 items:
+*                   type: object
+*                   properties:
+*                     question_name:
+*                       type: string
+*                       example: "Định luật II Newton"
+*                     question_content:
+*                       type: string
+*                       example: "Lực bằng khối lượng nhân gia tốc là phát biểu của định luật nào?"
+*                     answers:
+*                       type: array
+*                       items:
+*                         type: object
+*                         properties:
+*                           answer_content:
+*                             type: string
+*                             example: "Định luật II Newton"
+*                           is_correct:
+*                             type: boolean
+*                             example: true
+*           example:
+*             questions:
+*               - question_name: "Định luật II Newton"
+*                 question_content: "Lực bằng khối lượng nhân gia tốc là phát biểu của định luật nào?"
+*                 answers:
+*                   - answer_content: "Định luật I Newton"
+*                     is_correct: false
+*                   - answer_content: "Định luật II Newton"
+*                     is_correct: true
+*               - question_name: "Thủ đô của Việt Nam"
+*                 question_content: "Thành phố nào là thủ đô của Việt Nam?"
+*                 answers:
+*                   - answer_content: "Hà Nội"
+*                     is_correct: true
+*                   - answer_content: "TP. Hồ Chí Minh"
+*                     is_correct: false
+*     responses:
+*       201:
+*         description: Tạo câu hỏi thành công
+*       500:
+*         description: Lỗi server
+*/
 examRoute.post('/questions/create/:id',
-Authentication.AuthenticateToken,
-Authentication.AuthorizeRoles(ADMIN),
-QuestionController.create);
+        Authentication.AuthenticateToken,
+        Authentication.AuthorizeRoles(...ADMIN),
+        QuestionController.create);
 
 /**
  * @openapi
  * /exams/remove/{id}:
  *   delete:
- *     summary: Xóa một đề thi theo ID (yêu cầu admin)
+ *     summary: Xóa một đề thi theo ID (yêu cầu ...admin)
  *     tags: [Exams]
  *     parameters:
  *       - in: path
@@ -406,7 +411,7 @@ QuestionController.create);
  */
 examRoute.delete('/remove/:id',
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ExamController.remove);
 
 /**
@@ -445,7 +450,7 @@ examRoute.delete('/remove/:id',
 
 examRoute.post("/questions/add/:id",
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ExamQuestionController.add);
 
 /**
@@ -483,7 +488,7 @@ examRoute.post("/questions/add/:id",
  */
 examRoute.delete("/questions/remove/:id",
         Authentication.AuthenticateToken,
-        Authentication.AuthorizeRoles(ADMIN),
+        Authentication.AuthorizeRoles(...ADMIN),
         ExamQuestionController.remove);
 
 export default examRoute;

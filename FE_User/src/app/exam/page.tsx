@@ -26,7 +26,7 @@ export default function ExamList() {
   const exams = useSelector((state: RootState) => state.exam.exams);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPage, setTotalPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -41,7 +41,7 @@ export default function ExamList() {
       })
       const data = await resExam.json();
       dispatch(setExams(data.data.data));
-      setTotalPage(data.data.totalPages);
+      setTotalPages(data.data.totalPages);
     }
     fetchExam();
     // dispatch(
@@ -57,8 +57,6 @@ export default function ExamList() {
     localStorage.setItem("exam", JSON.stringify(exam))
     router.push(`/exam/${exam_id}/do`)
   }
-
-  console.log(totalPage);
   
   return (
     <div className={styles.container}>
@@ -87,7 +85,7 @@ export default function ExamList() {
       {filterExam.length === 0 ? (
           <p className={styles.empty}>Không có đề thi cho chủ đề này.</p>
         ) : (
-          <Pagination totalPages={totalPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         )}
     </div>
   );

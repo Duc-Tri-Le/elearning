@@ -7,12 +7,12 @@ import Image from "next/image";
 import styles from "./Sidebar.module.css";
 
 const navItems = [
-  { name: "Dashboard", href: "/admin/dashboard", icon: Home },
-  { name: "Users", href: "/admin/users", icon: Users },
-  { name: "Exams", href: "/admin/exams", icon: BookOpen },
-  { name: "Schedules", href: "/admin/schedules", icon: Clock },
-  { name: "Statistics", href: "/admin/statistics", icon: Calendar },
-  { name: "Settings", href: "/admin/settings", icon: Settings },
+  { name: "Bảng điều khiển", href: "/admin/dashboard", icon: Home },
+  { name: "Người dùng", href: "/admin/users", icon: Users },
+  { name: "Bài thi", href: "/admin/exams", icon: BookOpen },
+  { name: "Lịch thi", href: "/admin/schedules", icon: Clock },
+  { name: "Thống kê", href: "/admin/statistics", icon: Calendar },
+  { name: "Cài đặt", href: "/admin/settings", icon: Settings },
 ];
 
 export default function Sidebar() {
