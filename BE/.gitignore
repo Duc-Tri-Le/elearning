@@ -1,0 +1,34 @@
+# Node.js
+node_modules/
+npm-debug.log
+dist
+.dist
+./dist
+dist/*
+.dist/*
+./dist/*
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+venv
+/venv
+./venv
+
+microservice
+/microservice
+./microservice
+
+__note__.txt
+/__note__.txt
+./__note__.txt

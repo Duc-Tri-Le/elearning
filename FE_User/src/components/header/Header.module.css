@@ -1,0 +1,182 @@
+/* ====== Tổng thể Header ====== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px !important;
+    /* chiều cao header */
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    font-family: var(--font-heading);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* ====== Logo + Navbar (bên trái) ====== */
+.left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logoWrapper {
+    position: relative;
+    width: 100px;
+    aspect-ratio: 5 / 3;
+}
+
+.logoText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-weight: 700;
+    line-height: 1.1;
+    align-items: center;
+}
+
+.logoText span {
+    font-size: 0.8em;
+    /* nhỏ hơn chữ chính */
+    color: #0070f3;
+    /* đổi màu nếu muốn */
+    letter-spacing: 1px;
+}
+
+/* ====== Bên phải (User / Auth) ====== */
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* ====== Navbar ====== */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.navItem {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+    position: relative;
+    transition: color 0.2s ease;
+    padding-right: 30px;
+}
+
+.navItem:hover {
+    color: #0070f3;
+}
+
+.navItem::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0070f3;
+    transition: width 0.3s ease;
+}
+
+.navItem:hover::after {
+    width: 100%;
+}
+
+.user {
+    position: relative;
+}
+
+.avatar {
+    background-color: #0070f3;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+/* ====== Auth buttons ====== */
+.auth {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.login,
+.register {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.login {
+    color: #0070f3;
+    border: 1px solid #0070f3;
+}
+
+.login:hover {
+    background-color: #0070f3;
+    color: white;
+}
+
+.register {
+    background-color: #0070f3;
+    color: white;
+}
+
+.register:hover {
+    background-color: #0057c2;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .nav {
+        display: none;
+        /* Ẩn menu khi màn nhỏ, có thể thay bằng icon sau này */
+    }
+
+    .logoWrapper {
+        width: 100px;
+    }
+}

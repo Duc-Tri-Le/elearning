@@ -1,0 +1,31 @@
+.form {
+    padding: 1rem;
+    width: 400px;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 25px;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+}

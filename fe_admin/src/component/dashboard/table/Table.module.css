@@ -1,0 +1,26 @@
+.tableWrapper {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    background: #f7f7f7;
+    padding: 0.6rem;
+}
+
+.table td {
+    padding: 0.6rem;
+    border-top: 1px solid #eee;
+}
+
+.table tr:hover {
+    background-color: #f9fafb;
+}

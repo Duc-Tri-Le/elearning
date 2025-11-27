@@ -1,0 +1,75 @@
+/* 🟦 Font import — phải để ở dòng đầu tiên */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* 🟦 Biến CSS gốc */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Font family variables */
+  --font-header: Arial, Helvetica, sans-serif;
+  --font-heading: "Roboto Slab", serif;
+  --font-body: "Poppins", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* 🟦 Chế độ sáng / tối */
+html.light,
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+html.dark,
+body.dark {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+/* 🟦 Header (menu, navbar, logo, v.v.) */
+header,
+.header {
+  font-family: var(--font-header);
+}
+
+/* 🟦 Áp dụng font mặc định cho body */
+body {
+  font-family: var(--font-body);
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+/* 🟦 Tiêu đề (Heading, Title) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+  font-family: var(--font-heading);
+}
+
+/* 🟦 Class tiện dụng cho từng loại font */
+.font-header {
+  font-family: var(--font-header);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.docx {
+  font-family: "Segoe UI", "Arial", "Times New Roman", "Tahoma", sans-serif !important;
+  line-height: 1.6;
+}
+
+.docx p,
+.docx span,
+.docx div {
+  font-family: inherit !important;
+}

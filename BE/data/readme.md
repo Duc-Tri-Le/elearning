@@ -1,0 +1,3 @@
+- uploads: folder chứa file docx được user đẩy lên từ luồng tạo question
+- outputs: folder chứa file csv được model xuất ra
+- final: folder chứa file csv sau cùng user đã chỉnh sửa

@@ -1,0 +1,48 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.arrow {
+    cursor: pointer;
+    font-size: 22px;
+    transition: transform 0.2s ease;
+}
+
+.arrow:hover {
+    transform: translateX(3px);
+}
+
+.goalItem {
+    margin-bottom: 16px;
+}
+
+.goalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.subjectName {
+    color: #333;
+}
+
+.progressBox {
+    background-color: #eee;
+    border-radius: 8px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+}

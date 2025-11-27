@@ -1,0 +1,153 @@
+.user_container {
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.user_header {
+  display: flex;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.user_add_search {
+  display: flex;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  align-items: start;
+}
+
+.user_addButton {
+  background-color: white;
+  color: #0070f3;
+  border: 1px solid #0070f3;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.search_and_filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchInput {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.filter_role {
+  margin-bottom: 16px;
+}
+
+.select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: #f9fafb;
+}
+
+.user_table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.user_table th,
+.user_table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  border: 1px solid #ccc;
+}
+
+.user_table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.user_table tbody tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+/* Trạng thái hoạt động */
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.inactive {
+  color: red;
+  font-weight: bold;
+}
+
+/* Role */
+.admin {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+.user {
+  color: #0275d8;
+}
+
+.editIcon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.editIcon:hover{
+  color: #0070f3;
+}
+
+.roleGroup {
+  margin-top: 6px;
+}
+
+.roleGroup select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+/* Nút xóa */
+.delBtn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delBtn:hover {
+  background-color: #8ac8e5;
+}
+
+.empty {
+  text-align: center;
+  padding: 20px;
+  color: #9ca3af;
+}
